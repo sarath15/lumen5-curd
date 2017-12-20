@@ -62,10 +62,10 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'require|string',
+            'name' => 'required|string',
             'desc' => 'string',
-            'price' => 'numeric|min:0',
-            'cnt' => 'int|min:0'
+            'price' => 'required|numeric|min:0',
+            'cnt' => 'required|int|min:0'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
